@@ -42,7 +42,10 @@
 #include <log4cxx/propertyconfigurator.h>
 #include <log4cxx/basicconfigurator.h>
 #else
-#include <miLogger/logger.h>
+#ifndef MILOGGER_CATEGORY
+#define MILOGGER_CATEGORY "filewatcher.CoFileWatcher"
+#endif  
+#include <qUtilities/miLoggingQt.h>
 #endif
 
 #include <coserver/miMessage.h>

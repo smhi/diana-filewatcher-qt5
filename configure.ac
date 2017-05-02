@@ -32,16 +32,17 @@ AC_C_CONST
 AC_C_INLINE
 AC_TYPE_SIZE_T
 
+AX_CXX_COMPILE_STDCXX_11([noext])
+
 METNO_PROG_PKG_CONFIG
-METNO_REQUIRE_QT4([ 
-	Core
-	Gui
-	Network
+METNO_REQUIRE_PKGS([PC], [
+  metlibs-milogger >= 6.0.0
+  metlibs-putools >= 7.0.0
+  metlibs-qutilities-qt5 >= 8.0.0
+  metlibs-coserver-qt5 >= 3.0.0
+  Qt5Core Qt5Network
  ])
-METNO_REQUIRE_PKG([MILOGGER], [miLogger], [5.0.3])
-METNO_REQUIRE_PKG([PUTOOLS], [puTools], [5.1.4])
-METNO_REQUIRE_PKG([QUTILITIES], [qUtilities], [5.1.4])
-METNO_REQUIRE_PKG([COSERVER], [coserver], [2.0.4])
+METNO_CHECK_QT5_TOOLS()
 
 
 

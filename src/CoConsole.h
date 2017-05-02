@@ -41,7 +41,10 @@
 #ifdef HAVE_LOG4CXX
 #include <log4cxx/logger.h>
 #else
-#include <miLogger/logger.h>
+#ifndef MILOGGER_CATEGORY
+#define MILOGGER_CATEGORY "filewatcher.CoConsole"
+#endif  
+#include <qUtilities/miLoggingQt.h>
 #endif
 
 using namespace std;

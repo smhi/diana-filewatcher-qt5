@@ -11,6 +11,7 @@
 #include <puTools/miCommandLine.h>
 #include <puTools/miStringFunctions.h>
 #include <coserver/QLetterCommands.h>
+#include <iostream>
 #include <cstdlib>
 #include "CoFileWatcher.h"
 
@@ -21,14 +22,14 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 #ifdef _DEBUG
-  cerr << "FileWatcher main program called" << endl;
+  std::cerr << "FileWatcher main program called" << std::endl;
 #endif
 
 #ifdef _DEBUG
-  cerr << "argc: " << argc << endl;
+  std::cerr << "argc: " << argc << std::endl;
 
   for(int i=0;i<argc;i++) {
-    cerr << "argv: " << string(argv[i]) << endl;
+    std::cerr << "argv: " << string(argv[i]) << std::endl;
   }
 #endif
 
@@ -75,7 +76,7 @@ int main(int argc, char *argv[])
 
   if (cl.hasFlag('p')) {
 #ifdef _DEBUG
-    cerr << "P flag sent" << endl;
+    std::cerr << "P flag sent" << std::endl;
 #endif
     //istringstream os((cl.arg('p'))[0]);
     //os >> port;
@@ -84,18 +85,18 @@ int main(int argc, char *argv[])
       port = miutil::to_int(cl.arg('p')[0]);
     } else {
 #ifdef _DEBUG
-      cerr << "cl.arg('p').size() == 0" << cl.arg('p').size() << endl;
+      std::cerr << "cl.arg('p').size() == 0" << cl.arg('p').size() << std::endl;
 #endif
       port = qmstrings::port;
     }
 /*  } else if (server->readPortFromFile(fileport) == 0) {
-	  cerr << "Port read from file: " << fileport << endl;
+	  std::cerr << "Port read from file: " << fileport << std::endl;
 	  port = fileport;
   //} else if (portFromRange == false) {
    */
   } else {
 #ifdef _DEBUG
-    cerr << "Flag p not set!!!"  << endl;
+    std::cerr << "Flag p not set!!!"  << std::endl;
 #endif
     port = qmstrings::port;
   }
@@ -111,7 +112,7 @@ int main(int argc, char *argv[])
   }
 
 #ifdef _DEBUG
-  cerr << "Port is really set to: " << port << endl;
+  std::cerr << "Port is really set to: " << port << std::endl;
 #endif
 
   string logPropFilename = "";
@@ -146,12 +147,12 @@ int main(int argc, char *argv[])
   QCoreApplication* app;
   if (cl.hasFlag('v')) {
 #ifdef _DEBUG
-    cerr << "Visible" << endl;
+    std::cerr << "Visible" << std::endl;
 #endif
     app = new QApplication(argc, argv);
   } else {
 #ifdef _DEBUG
-    cerr << "Console" << endl;
+    std::cerr << "Console" << std::endl;
 #endif
     app = new QCoreApplication(argc, argv);
   }
